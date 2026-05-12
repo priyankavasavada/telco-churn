@@ -358,7 +358,7 @@ with tab1:
             st.subheader("Top Risk Factors")
 
             input_row = df.iloc[0:1]
-            baseline = pd.DataFrame(0, index=[0], columns=feature_names)
+            baseline = pd.DataFrame(0.0, index=[0], columns=feature_names)
             baseline_proba = model.predict_proba(baseline)[0, 1]
             contributions = []
 
