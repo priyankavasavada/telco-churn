@@ -1,6 +1,7 @@
 import numpy as np
 import pandas as pd
 import pickle
+import gzip
 import warnings
 warnings.filterwarnings('ignore')
 
@@ -235,10 +236,10 @@ artifacts = {
     'final_test_accuracy': final_acc,
 }
 
-with open(MODEL_PATH, 'wb') as f:
+with gzip.open(MODEL_PATH + '.gz', 'wb', compresslevel=9) as f:
     pickle.dump(artifacts, f)
 
-print(f"\nModel saved as {MODEL_PATH}")
+print(f"\nModel saved as {MODEL_PATH}.gz (compressed)")
 print("\n" + "=" * 60)
 print("TRAINING COMPLETE")
 print("=" * 60)

@@ -190,11 +190,9 @@ st.markdown(CUSTOM_CSS, unsafe_allow_html=True)
 
 @st.cache_resource
 def load_artifacts():
-    import os, subprocess, sys
-    if not os.path.exists('model.pkl'):
-        with st.spinner("Training model for the first time... This may take a minute."):
-            subprocess.run([sys.executable, 'train.py'], check=True)
-    with open('model.pkl', 'rb') as f:
+    import gzip
+    path = 'model.pkl.gz' if __import__('os').path.exists('model.pkl.gz') else 'model.pkl'
+    with gzip.open(path, 'rb') if path.endswith('.gz') else open(path, 'rb') as f:
         return pickle.load(f)
 
 @st.cache_data
