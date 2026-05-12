@@ -297,22 +297,23 @@ with tab1:
         predict_clicked = st.button("🔮 Predict Churn", type="primary", width='stretch')
 
     if predict_clicked:
-        df = pd.DataFrame([input_data])
+        try:
+            df = pd.DataFrame([input_data])
 
-        for col in label_encoders:
-            if col in df.columns:
-                try:
+            for col in label_encoders:
+                if col in df.columns:
                     df[col] = label_encoders[col].transform(df[col])
-                except ValueError:
-                    st.error(f"Unexpected value in {col}. Please check your input.")
-                    st.stop()
 
-        num_cols = ['tenure', 'MonthlyCharges', 'TotalCharges']
-        df[num_cols] = scaler.transform(df[num_cols])
-        df = df[feature_names]
+            num_cols = ['tenure', 'MonthlyCharges', 'TotalCharges']
+            df[num_cols] = scaler.transform(df[num_cols])
+            df = df[feature_names]
 
-        prob = model.predict_proba(df)[0, 1]
-        pred = model.predict(df)[0]
+            prob = model.predict_proba(df)[0, 1]
+            pred = model.predict(df)[0]
+        except Exception as e:
+            st.error(f"**Prediction Error:** {type(e).__name__}")
+            st.code(str(e))
+            st.stop()
 
         st.markdown('<div class="divider"></div>', unsafe_allow_html=True)
 
