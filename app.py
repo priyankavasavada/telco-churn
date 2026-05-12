@@ -305,6 +305,7 @@ with tab1:
                     df[col] = label_encoders[col].transform(df[col])
 
             num_cols = ['tenure', 'MonthlyCharges', 'TotalCharges']
+            df[num_cols] = df[num_cols].astype(float)
             df[num_cols] = scaler.transform(df[num_cols])
             df = df[feature_names]
 
