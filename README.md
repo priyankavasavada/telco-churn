@@ -6,6 +6,20 @@
 
 An interactive machine learning application that predicts customer churn for a telecommunications company. Built with Streamlit, it provides real-time predictions, exploratory data analysis, and model performance metrics.
 
+## Screenshots
+
+| Predict Churn | Prediction Results |
+|---|---|
+| ![Input Form](screenshots/predict-input.png) | ![Results](screenshots/predict-result.png) |
+
+| Data Exploration | Churn Analysis |
+|---|---|
+| ![EDA Overview](screenshots/eda-overview.png) | ![Insights](screenshots/eda-insights.png) |
+
+| Feature Correlation | Model Performance |
+|---|---|
+| ![Correlation Matrix](screenshots/correlation-matrix.png) | ![Model Comparison](screenshots/model-performance.png) |
+
 ## Features
 
 - **Real-time Churn Prediction** — Enter customer details and get instant churn probability with risk factor analysis
