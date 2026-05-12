@@ -5,8 +5,8 @@ __pycache__/
 dist/
 build/
 
-# ML artifacts (keep for deployment)
-# model.pkl
+# ML artifacts
+model.pkl
 
 # Environment
 .env

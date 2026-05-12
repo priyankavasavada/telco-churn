@@ -190,6 +190,10 @@ st.markdown(CUSTOM_CSS, unsafe_allow_html=True)
 
 @st.cache_resource
 def load_artifacts():
+    import os, subprocess, sys
+    if not os.path.exists('model.pkl'):
+        with st.spinner("Training model for the first time... This may take a minute."):
+            subprocess.run([sys.executable, 'train.py'], check=True)
     with open('model.pkl', 'rb') as f:
         return pickle.load(f)
 
